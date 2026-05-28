@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AP Biology Summer Assignment 2026/27</title>
+  <style>
+    :root {
+      --blue: #2f5f91;
+      --light-blue: #e7f0f8;
+      --pale-blue: #f4f8fc;
+      --text: #1f2933;
+      --muted: #5b6470;
+      --border: #b7c9da;
+      --green: #e9f7ef;
+      --yellow: #fff7df;
+      --red: #fff0f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #f6f8fb;
+      line-height: 1.5;
+    }
+    header {
+      background: linear-gradient(135deg, #1f4f7f, #3d79ad);
+      color: white;
+      padding: 2.25rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: 0.02em;
+    }
+    header p {
+      margin: 0.5rem auto 0;
+      max-width: 850px;
+      font-size: 1.05rem;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    nav .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.65rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    nav a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+    }
+    nav a:hover { background: var(--light-blue); }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 4rem;
+    }
+    section {
+      background: white;
+      border: 1px solid #d8e2eb;
+      border-radius: 14px;
+      padding: 1.35rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.035);
+    }
+    h2 {
+      color: var(--blue);
+      font-size: 1.75rem;
+      margin-top: 0.2rem;
+      border-bottom: 3px solid var(--light-blue);
+      padding-bottom: 0.35rem;
+    }
+    h3 {
+      color: #1d3f63;
+      margin-top: 1.5rem;
+    }
+    h4 {
+      margin-bottom: 0.4rem;
+      color: #243b53;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      background: var(--pale-blue);
+    }
+    .important { background: var(--yellow); border-color: #efd180; }
+    .allowed { background: var(--green); border-color: #b7dfc7; }
+    .not-allowed { background: var(--red); border-color: #e4bbbb; }
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #9fb4c7;
+      padding: 0.65rem;
+      vertical-align: top;
+    }
+    th {
+      background: var(--light-blue);
+      text-align: left;
+    }
+    .work-cell { height: 4.25rem; }
+    .answer-lines {
+      min-height: 4rem;
+      border-bottom: 1px solid #9aa9b5;
+      margin: 0.75rem 0 1rem;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 1.7rem,
+        #c5d0da 1.75rem
+      );
+    }
+    .formula {
+      max-width: 760px;
+      width: 100%;
+      display: block;
+      margin: 1rem auto;
+      border: 1px solid #e5ecf2;
+      border-radius: 8px;
+      background: white;
+      padding: 0.35rem;
+    }
+    .download {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 0.5rem;
+    }
+    .download:hover { background: #23496f; }
+    .small { color: var(--muted); font-size: 0.95rem; }
+    .checklist li { margin-bottom: 0.35rem; }
+    details {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0;
+      background: #fbfdff;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .graph-box {
+      min-height: 420px;
+      border: 2px dashed #9fb4c7;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-align: center;
+      background: #fcfdff;
+      margin: 1rem 0;
+      padding: 1rem;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 2rem 1rem;
+    }
+    @media print {
+      nav, .download { display: none; }
+      body { background: white; }
+      section { page-break-inside: avoid; box-shadow: none; border: 1px solid #bbb; }
+      header { background: white; color: black; border-bottom: 2px solid #333; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AP Biology Summer Assignment - 2026/27</h1>
+    <p><strong>Mr. Smitka - A147 - rsmitka@roseville.k12.mi.us</strong></p>
+    <p>Welcome to AP Biology! This summer assignment is designed to help you begin thinking like a biologist before the school year starts.</p>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#overview">Overview</a>
+      <a href="#assignment1">Assignment 1</a>
+      <a href="#assignment2">Assignment 2</a>
+      <a href="#assignment3">Assignment 3</a>
+      <a href="#expectations">Expectations</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="overview">
+      <h2>Overview</h2>
+      <div class="card important">
+        <strong>Due Date:</strong> All assignments are due on the <strong>second day of school</strong>. Do not wait until the last week of summer to begin.
+      </div>
+
+      <h3>The Four Big Ideas of AP Biology</h3>
+      <ul>
+        <li><strong>Big Idea 1:</strong> Evolution drives the diversity and unity of life.</li>
+        <li><strong>Big Idea 2:</strong> Biological systems use energy and molecular building blocks to grow, reproduce, and maintain homeostasis.</li>
+        <li><strong>Big Idea 3:</strong> Living systems store, retrieve, transmit, and respond to information.</li>
+        <li><strong>Big Idea 4:</strong> Biological systems interact, and those interactions produce complex properties.</li>
+      </ul>
+
+      <h3>AP Biology Science Practices</h3>
+      <table>
+        <tr><th>Science Practice</th><th>How You Will Use It</th></tr>
+        <tr><td>SP1 - Concept Explanation</td><td>Explain biological processes and concepts in your own words.</td></tr>
+        <tr><td>SP2 - Visual Representations</td><td>Create and interpret graphs, tables, and models.</td></tr>
+        <tr><td>SP3 - Questions and Methods</td><td>Ask testable questions and design investigations.</td></tr>
+        <tr><td>SP4 - Data Analysis</td><td>Analyze patterns, trends, and sources of variation in data.</td></tr>
+        <tr><td>SP5 - Statistical Tests</td><td>Use mean, standard deviation, SEM, error bars, and chi-square.</td></tr>
+        <tr><td>SP6 - Argumentation</td><td>Use evidence and reasoning to support biological claims.</td></tr>
+      </table>
+
+      <h3>Assignment Overview</h3>
+      <table>
+        <tr><th>Assignment</th><th>Focus</th><th>What You Will Do</th><th>What You Submit</th></tr>
+        <tr>
+          <td>1</td>
+          <td>Thinking Like a Biologist</td>
+          <td>Analyze biological data, interpret graphs, evaluate reliability, and explain scientific reasoning using evidence.</td>
+          <td>Completed calculations, data tables, graphs, and written analysis questions.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>AP Biology Concept Photo Investigation</td>
+          <td>Observe and explain real-world biology using AP Biology concepts and scientific thinking.</td>
+          <td>Digital portfolio or printed photo pages with original photos and explanations.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>AP Biology Investigation Design</td>
+          <td>Design a biological investigation by developing a question, identifying variables, planning data collection, and predicting results.</td>
+          <td>A completed experimental investigation design with tables, graphs, and scientific explanations.</td>
+        </tr>
+      </table>
+
+      <a class="download" href="assets/AP_Biology_Summer_Assignment_2026_2027.pdf" download>Download the PDF Packet</a>
+    </section>
+
+    <section id="assignment1">
+      <h2>Assignment #1 - Thinking Like a Biologist</h2>
+      <p>Biologists use data to identify patterns, evaluate reliability, and support scientific conclusions. In AP Biology, you will analyze investigations, interpret graphs, evaluate evidence, and explain biological reasoning.</p>
+
+      <h3>Investigation 1 - Are These Results Reliable?</h3>
+      <p>Scientists repeat experiments because biological systems naturally vary. In this investigation, you will calculate statistics and determine whether results appear reliable.</p>
+      <p><strong>Watch this video for help:</strong> <a href="https://tinyurl.com/APBio-StDev" target="_blank" rel="noopener">Standard Deviation Help Video</a></p>
+
+      <table>
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <tr><td>Mean</td><td>The average value of a data set.</td></tr>
+        <tr><td>Standard Deviation</td><td>A measure of how spread out data are from the mean.</td></tr>
+        <tr><td>Variability</td><td>Natural differences found in biological data.</td></tr>
+      </table>
+
+      <h4>Why Do Biologists Use Standard Deviation?</h4>
+      <p>Biologists use standard deviation to measure how much data vary from the mean. It helps scientists determine whether results are consistent and reliable or whether there is a large amount of variability in the data.</p>
+
+      <h4>Standard Deviation Formula</h4>
+      <img class="formula" src="assets/standard_deviation_formula.png" alt="Standard deviation formula with symbols defined" />
+      <p><strong>You are NOT expected to memorize this formula.</strong> Focus on understanding what the calculations tell scientists about the data.</p>
+
+      <h4>Worked Example</h4>
+      <p>A student measures the height of three plants.</p>
+      <table>
+        <tr><th>Plant Height (x)</th><th>x - mean</th><th>(x - mean)<sup>2</sup></th></tr>
+        <tr><td>5</td><td>-1</td><td>1</td></tr>
+        <tr><td>6</td><td>0</td><td>0</td></tr>
+        <tr><td>7</td><td>1</td><td>1</td></tr>
+      </table>
+      <p><strong>Mean = (5 + 6 + 7) / 3 = 6</strong></p>
+
+      <h4>Seed Germination Investigation</h4>
+      <p>A biology class measured the number of seeds that germinated in five identical trays.</p>
+      <table>
+        <tr><th>Tray</th><th>Seeds Germinated (x)</th><th>x - mean</th><th>(x - mean)<sup>2</sup></th></tr>
+        <tr><td>1</td><td>8</td><td></td><td></td></tr>
+        <tr><td>2</td><td>4</td><td></td><td></td></tr>
+        <tr><td>3</td><td>6</td><td></td><td></td></tr>
+        <tr><td>4</td><td>6</td><td></td><td></td></tr>
+        <tr><td>5</td><td>7</td><td></td><td></td></tr>
+        <tr><td>Totals</td><td></td><td></td><td></td></tr>
+      </table>
+
+      <h4>Step-by-Step Calculations</h4>
+      <table>
+        <tr><th>Step</th><th>Student Work</th></tr>
+        <tr><td>1. Add all data values together</td><td class="work-cell"></td></tr>
+        <tr><td>2. Divide by the number of data points to calculate the mean</td><td class="work-cell"></td></tr>
+        <tr><td>3. Subtract the mean from each data point</td><td class="work-cell"></td></tr>
+        <tr><td>4. Square each difference</td><td class="work-cell"></td></tr>
+        <tr><td>5. Add all squared differences together</td><td class="work-cell"></td></tr>
+        <tr><td>6. Calculate the standard deviation</td><td class="work-cell"></td></tr>
+      </table>
+
+      <h4>Analysis Questions</h4>
+      <ol>
+        <li>Describe the variability in this data set using evidence from the data.<div class="answer-lines"></div></li>
+        <li>Explain why variability is expected when working with living systems.<div class="answer-lines"></div></li>
+        <li>Explain how replication and larger sample sizes improve scientific reliability.<div class="answer-lines"></div></li>
+      </ol>
+
+      <h3>Investigation 2 - Do These Groups Appear Different?</h3>
+      <p>Scientists compare groups to determine whether differences appear meaningful or could simply be due to natural variation.</p>
+      <p><strong>Watch this video for help:</strong> <a href="https://tinyurl.com/APBio-StError" target="_blank" rel="noopener">SEM and Error Bars Help Video</a></p>
+
+      <table>
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <tr><td>SEM</td><td>A measure of how precisely a sample estimates the true population mean.</td></tr>
+        <tr><td>Error Bars</td><td>Lines on a graph showing variability or uncertainty.</td></tr>
+      </table>
+
+      <h4>Why Do Biologists Use SEM and Error Bars?</h4>
+      <p>The <strong>Standard Error of the Mean (SEM)</strong> measures how precisely a sample mean estimates the true population mean. Biologists use SEM and error bars to evaluate the reliability of data and compare groups visually. Smaller error bars usually suggest more consistent data, while overlapping error bars may indicate that differences between groups are not biologically significant.</p>
+
+      <h4>Sunflower Stomata Investigation</h4>
+      <table>
+        <tr><th>Group</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+        <tr><td>Group A</td><td>88</td><td>93</td><td>90</td><td>92</td><td>75</td><td>78</td></tr>
+        <tr><td>Group B</td><td>67</td><td>85</td><td>90</td><td>100</td><td>72</td><td>97</td></tr>
+      </table>
+
+      <table>
+        <tr><th>Group</th><th>n</th><th>Mean</th><th>Standard Deviation</th><th>SEM</th><th>+/- 2 SEM</th></tr>
+        <tr><td>Group A</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Group B</td><td></td><td></td><td></td><td></td><td></td></tr>
+      </table>
+
+      <h4>Step-by-Step Calculations</h4>
+      <table>
+        <tr><th>Step</th><th>Student Work</th></tr>
+        <tr><td>1. Calculate the mean for each group</td><td class="work-cell"></td></tr>
+        <tr><td>2. Calculate the standard deviation for each group</td><td class="work-cell"></td></tr>
+        <tr><td>3. Calculate SEM for each group</td><td class="work-cell"></td></tr>
+        <tr><td>4. Calculate +/- 2 SEM</td><td class="work-cell"></td></tr>
+        <tr><td>5. Graph the data with error bars</td><td class="work-cell"></td></tr>
+      </table>
+
+      <p>Create a bar graph showing the mean stomatal density for Group A and Group B with +/- 2 SEM error bars.</p>
+      <div class="graph-box">Graph Space<br />Create your bar graph here if printing, or create one digitally.</div>
+
+      <h4>Graph Analysis Questions</h4>
+      <ol>
+        <li>Which group has the higher mean stomatal density?<div class="answer-lines"></div></li>
+        <li>Do the error bars overlap?<div class="answer-lines"></div></li>
+        <li>What might the overlap or lack of overlap suggest about the groups?<div class="answer-lines"></div></li>
+        <li>Identify one limitation of this investigation.<div class="answer-lines"></div></li>
+        <li>Suggest one improvement scientists could make.<div class="answer-lines"></div></li>
+      </ol>
+
+      <h3>Investigation 3 - Was This Experiment Designed Well?</h3>
+      <p>Strong investigations control variables carefully so scientists can identify cause-and-effect relationships.</p>
+
+      <h4>Scenario 1 - Fertilizer and Plant Growth</h4>
+      <p>A student investigates how fertilizer concentration affects bean plant growth.</p>
+      <table>
+        <tr><th>Component</th><th>Student Response</th></tr>
+        <tr><td>Independent Variable</td><td></td></tr>
+        <tr><td>Dependent Variable</td><td></td></tr>
+        <tr><td>Controlled Variable #1</td><td></td></tr>
+        <tr><td>Controlled Variable #2</td><td></td></tr>
+        <tr><td>Control Group</td><td></td></tr>
+        <tr><td>Why is the control group important?</td><td></td></tr>
+      </table>
+
+      <h4>Scenario 2 - Temperature and Enzyme Activity</h4>
+      <p>A student investigates how temperature affects enzyme activity.</p>
+      <table>
+        <tr><th>Component</th><th>Student Response</th></tr>
+        <tr><td>Independent Variable</td><td></td></tr>
+        <tr><td>Dependent Variable</td><td></td></tr>
+        <tr><td>Controlled Variable #1</td><td></td></tr>
+        <tr><td>Controlled Variable #2</td><td></td></tr>
+        <tr><td>Control Group</td><td></td></tr>
+        <tr><td>Why is the control group important?</td><td></td></tr>
+      </table>
+
+      <h3>Investigation 4 - Did the Results Match the Prediction?</h3>
+      <p>Scientists compare observed data to expected results to determine whether differences are likely due to chance.</p>
+      <p><strong>Watch this video for help:</strong> <a href="https://tinyurl.com/APBio-Null-Chi" target="_blank" rel="noopener">Null Hypothesis and Chi-Square Help Video</a></p>
+
+      <h4>Why Do Biologists Use Null Hypotheses?</h4>
+      <p>Biologists use null hypotheses as a starting point for statistical analysis. A null hypothesis assumes that there is no significant difference between the observed data and the expected data, allowing scientists to test whether experimental results are likely due to chance.</p>
+
+      <details>
+        <summary>Null Hypothesis Examples</summary>
+        <p><strong>Question:</strong> Does fertilizer type affect tomato plant growth?</p>
+        <p><strong>Null Hypothesis:</strong> There is no significant difference in tomato plant growth among the different fertilizer treatments.</p>
+        <p><strong>Question:</strong> Does temperature affect bacterial colony growth?</p>
+        <p><strong>Null Hypothesis:</strong> There is no significant difference in bacterial colony growth at the different temperatures tested.</p>
+      </details>
+
+      <h4>Null Hypothesis Practice</h4>
+      <ol>
+        <li>Do plants grow taller under blue light than under red light?<br /><strong>Null Hypothesis:</strong><div class="answer-lines"></div></li>
+        <li>Does caffeine increase heart rate?<br /><strong>Null Hypothesis:</strong><div class="answer-lines"></div></li>
+        <li>Does salt concentration affect osmosis in potato cells?<br /><strong>Null Hypothesis:</strong><div class="answer-lines"></div></li>
+      </ol>
+
+      <h4>Genetics and Chi-Square Investigation</h4>
+      <h4>Chi-Square Formula</h4>
+      <img class="formula" src="assets/chi_square_formula.png" alt="Chi-square formula with observed and expected values defined" />
+
+      <h4>Chi-Square Table</h4>
+      <img class="formula" src="assets/chi_square_table.png" alt="Chi-square critical value table" />
+
+      <h4>Why Do Biologists Use Chi-Square Analysis?</h4>
+      <p>Biologists use chi-square analysis to determine whether differences between observed data and expected data are likely due to chance or whether the differences may be biologically meaningful. Chi-square is commonly used in genetics to compare observed offspring ratios to predicted Mendelian ratios.</p>
+
+      <p>In a genetics cross, the expected ratio is <strong>3 purple-flowered plants : 1 white-flowered plant</strong>.</p>
+      <p>A student observed:</p>
+      <ul>
+        <li>56 purple-flowered plants</li>
+        <li>24 white-flowered plants</li>
+      </ul>
+
+      <table>
+        <tr><th>Phenotype</th><th>Observed (O)</th><th>Expected Ratio</th><th>Expected (E)</th><th>O - E</th><th>(O - E)<sup>2</sup></th><th>(O - E)<sup>2</sup> / E</th></tr>
+        <tr><td>Purple Flowers</td><td>56</td><td>3/4</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>White Flowers</td><td>24</td><td>1/4</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>Total Chi-Square</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </table>
+
+      <h4>Step-by-Step Calculations</h4>
+      <table>
+        <tr><th>Step</th><th>Student Work</th></tr>
+        <tr><td>1. Calculate the expected number for each phenotype</td><td class="work-cell"></td></tr>
+        <tr><td>2. Subtract expected values from observed values</td><td class="work-cell"></td></tr>
+        <tr><td>3. Square each difference</td><td class="work-cell"></td></tr>
+        <tr><td>4. Divide each squared difference by the expected value</td><td class="work-cell"></td></tr>
+        <tr><td>5. Add all values to calculate chi-square</td><td class="work-cell"></td></tr>
+        <tr><td>6. Determine degrees of freedom</td><td class="work-cell"></td></tr>
+        <tr><td>7. Compare your chi-square value to the critical value table</td><td class="work-cell"></td></tr>
+        <tr><td>8. Decide whether to reject or fail to reject the null hypothesis</td><td class="work-cell"></td></tr>
+      </table>
+
+      <h4>Analysis Questions</h4>
+      <ol>
+        <li>Write a null hypothesis for this investigation.<div class="answer-lines"></div></li>
+        <li>Do the observed results appear close to the expected ratio? Explain your reasoning.<div class="answer-lines"></div></li>
+        <li>Why might biological data differ slightly from expected ratios?<div class="answer-lines"></div></li>
+        <li>Why is chi-square useful in genetics investigations?<div class="answer-lines"></div></li>
+      </ol>
+
+      <h4>What Strong AP Biology Thinking Looks Like</h4>
+      <table>
+        <tr><th>Weak Response</th><th>Strong AP Biology Response</th></tr>
+        <tr><td>The data are different.</td><td>The data show moderate variability because several values differ noticeably from the mean.</td></tr>
+        <tr><td>The experiment worked.</td><td>The investigation appears reliable because the results show relatively low variability across trials.</td></tr>
+        <tr><td>The groups are different.</td><td>The lack of overlapping error bars may suggest the groups differ significantly.</td></tr>
+      </table>
+    </section>
+
+    <section id="assignment2">
+      <h2>Assignment #2 - AP Biology Concept Photo Investigation</h2>
+      <p><strong>Purpose:</strong> Biology is not just vocabulary. Biology is the study of living systems, interactions, structures, functions, and evidence. This assignment asks you to observe biology in the real world and explain what you see using AP Biology concepts.</p>
+
+      <h3>Directions</h3>
+      <ul class="checklist">
+        <li>Create a digital portfolio using Google Sites, Canva, Google Slides, PowerPoint, Wix, Weebly, or another free web-publishing format.</li>
+        <li>Include <strong>15 original photos</strong>. Each photo must represent a different AP Biology concept.</li>
+        <li>Each photo must include a small proof object, such as a keychain, pen, bracelet, or small toy, to verify that the photo is your own.</li>
+        <li>Do not use images from the internet, textbooks, AI image generators, or other publications.</li>
+        <li>Be respectful of living things. Do not harm, remove, or disturb organisms or habitats.</li>
+        <li>Humans may be used in a few photos, but most photos should come from natural or biological examples around you.</li>
+        <li>Email the website link or completed digital portfolio to <strong>rsmitka@roseville.k12.mi.us</strong>.</li>
+      </ul>
+
+      <h3>Each Photo Entry Must Include</h3>
+      <table>
+        <tr><th>Required Component</th><th>What to Write</th></tr>
+        <tr><td>1. Biological Concept</td><td>Name the AP Biology concept shown in the photo.</td></tr>
+        <tr><td>2. Definition</td><td>Define the concept in your own words.</td></tr>
+        <tr><td>3. Biological Explanation</td><td>Explain how the photo demonstrates the concept. Focus on process, mechanism, interaction, or structure and function.</td></tr>
+        <tr><td>4. Big Idea Connection</td><td>Identify BI1, BI2, BI3, or BI4 and explain the connection.</td></tr>
+        <tr><td>5. AP Unit Connection</td><td>Identify the AP Biology unit most closely connected to the concept.</td></tr>
+        <tr><td>6. Testable Question</td><td>Write one scientific question inspired by the photo that could be investigated.</td></tr>
+      </table>
+
+      <h3>Model Photo Entry</h3>
+      <table>
+        <tr><th>Entry Part</th><th>Example</th></tr>
+        <tr><td>Concept</td><td>Detritivore</td></tr>
+        <tr><td>Definition</td><td>A detritivore is an organism that eats dead stuff and helps break it down in the environment.</td></tr>
+        <tr><td>Biological Explanation</td><td>Earthworms break down dead organic matter and recycle nutrients back into the soil.</td></tr>
+        <tr><td>Big Idea Connection</td><td>Big Idea 4: Organisms interact with their environment and help maintain ecosystem function.</td></tr>
+        <tr><td>AP Unit Connection</td><td>Unit 8: Ecology</td></tr>
+        <tr><td>Testable Question</td><td>Does the number of earthworms affect the rate of decomposition in soil?</td></tr>
+      </table>
+
+      <h3>Photo Investigation Rubric</h3>
+      <table>
+        <tr><th>Category</th><th>Points</th><th>Description</th></tr>
+        <tr><td>Original photos with proof object</td><td>15</td><td>One point for each original photo that includes the proof object.</td></tr>
+        <tr><td>Concept identification and definition</td><td>15</td><td>Concepts are accurate and definitions are in the student's own words.</td></tr>
+        <tr><td>Biological explanations</td><td>15</td><td>Explanations connect each photo to biological processes or interactions.</td></tr>
+        <tr><td>Big Idea and AP Unit connections</td><td>15</td><td>Entries correctly connect concepts to AP Biology themes and units.</td></tr>
+        <tr><td>Testable questions</td><td>15</td><td>Questions are scientific, testable, and related to the photo.</td></tr>
+        <tr><th>Total</th><th>75</th><th></th></tr>
+      </table>
+
+      <details>
+        <summary>Suggested Concepts by AP Biology Unit</summary>
+        <h4>Unit 1: Chemistry of Life</h4>
+        <p>atom, element, compound, isotope, ion, covalent bond, ionic bond, hydrogen bond, cohesion, adhesion, polarity, pH, acid, base, buffer, monomer, polymer, dehydration synthesis, hydrolysis, carbohydrate, monosaccharide, polysaccharide, lipid, phospholipid, saturated fat, unsaturated fat, protein, amino acid, peptide bond, enzyme, substrate, active site, nucleic acid, DNA, RNA, nucleotide, ATP, macromolecule</p>
+        <h4>Unit 2: Cell Structure and Function</h4>
+        <p>cell theory, prokaryote, eukaryote, organelle, plasma membrane, phospholipid bilayer, selectively permeable membrane, diffusion, osmosis, facilitated diffusion, active transport, endocytosis, exocytosis, tonicity, hypertonic, hypotonic, isotonic, surface area-to-volume ratio, nucleus, ribosome, endoplasmic reticulum, Golgi apparatus, lysosome, vacuole, mitochondrion, chloroplast, cytoskeleton, cilia, flagella, extracellular matrix</p>
+        <h4>Unit 3: Cellular Energetics</h4>
+        <p>metabolism, anabolic pathway, catabolic pathway, activation energy, enzyme inhibition, competitive inhibition, allosteric regulation, photosynthesis, chlorophyll, light-dependent reactions, Calvin cycle, cellular respiration, glycolysis, Krebs cycle, citric acid cycle, electron transport chain, chemiosmosis, ATP synthase, fermentation, aerobic respiration, anaerobic respiration, NADH, FADH2, proton gradient</p>
+        <h4>Unit 4: Cell Communication and Cell Cycle</h4>
+        <p>cell signaling, ligand, receptor, signal transduction pathway, phosphorylation cascade, second messenger, G protein-coupled receptor, tyrosine kinase receptor, feedback loop, positive feedback, negative feedback, homeostasis, mitosis, meiosis, cytokinesis, chromosome, chromatin, sister chromatids, centromere, spindle fibers, cell cycle, interphase, G1 phase, S phase, G2 phase, cyclin, cyclin-dependent kinase, apoptosis</p>
+        <h4>Unit 5: Heredity</h4>
+        <p>gene, allele, genotype, phenotype, dominant trait, recessive trait, homozygous, heterozygous, Punnett square, monohybrid cross, dihybrid cross, segregation, independent assortment, linked genes, recombination, crossing over, nondisjunction, haploid, diploid, autosome, sex-linked trait, pedigree, variation, meiosis, fertilization, chromosomal mutation</p>
+        <h4>Unit 6: Gene Expression and Regulation</h4>
+        <p>DNA replication, semiconservative replication, helicase, DNA polymerase, RNA polymerase, transcription, translation, codon, anticodon, mRNA, tRNA, rRNA, ribosome, mutation, substitution, insertion, deletion, frameshift mutation, operon, lac operon, gene regulation, epigenetics, transcription factor, enhancer, silencer, alternative splicing, biotechnology, gel electrophoresis, PCR, recombinant DNA, CRISPR, plasmid</p>
+        <h4>Unit 7: Natural Selection</h4>
+        <p>evolution, natural selection, adaptation, fitness, variation, mutation, genetic drift, gene flow, bottleneck effect, founder effect, Hardy-Weinberg equilibrium, speciation, reproductive isolation, convergent evolution, divergent evolution, homologous structures, analogous structures, phylogeny, cladogram, common ancestor, directional selection, stabilizing selection, disruptive selection, artificial selection</p>
+        <h4>Unit 8: Ecology</h4>
+        <p>ecology, ecosystem, community, population, biome, biosphere, niche, habitat, carrying capacity, density-dependent factor, density-independent factor, trophic level, food chain, food web, primary productivity, biomass, symbiosis, mutualism, commensalism, parasitism, competition, succession, biodiversity, carbon cycle, nitrogen cycle, water cycle, energy pyramid, exponential growth, logistic growth, keystone species</p>
+      </details>
+    </section>
+
+    <section id="assignment3">
+      <h2>Assignment #3 - AP Biology Investigation Design</h2>
+      <p><strong>Purpose:</strong> AP Biology focuses heavily on scientific thinking and experimental design. Scientists ask questions, identify variables, collect evidence, analyze results, and explain conclusions using biological reasoning.</p>
+      <p>For this assignment, you will design a biological investigation based on a real-world observation. You do <strong>NOT</strong> need to conduct the experiment.</p>
+
+      <h3>Step 1 - Choose a Biological Observation</h3>
+      <div class="two-col">
+        <div>
+          <p>Choose ONE biological phenomenon that interests you. You may use:</p>
+          <ul>
+            <li>one of your photos from Assignment #2</li>
+            <li>an observation from nature</li>
+            <li>an everyday biological process</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Possible Topics:</strong>
+          <ul>
+            <li>plant growth</li>
+            <li>enzyme activity</li>
+            <li>fermentation</li>
+            <li>photosynthesis</li>
+            <li>osmosis</li>
+            <li>decomposition</li>
+            <li>transpiration</li>
+            <li>bacterial growth</li>
+            <li>biodiversity</li>
+          </ul>
+          <p>Choose a topic that can be tested and measured.</p>
+        </div>
+      </div>
+
+      <h3>Step 2 - Create Your Investigation Design</h3>
+      <p>In Microsoft Word or Google Docs, type your responses using the headings below. Your completed assignment should be approximately 1-2 pages plus a data table. Use complete sentences and scientific vocabulary whenever appropriate.</p>
+
+      <h4>1. Research Question</h4>
+      <p>Write ONE clear, testable question. A strong research question tests the effect of one variable on another variable, can be measured with data, and is specific and focused.</p>
+      <p><strong>Strong Example:</strong> How does temperature affect the rate of yeast respiration?</p>
+      <p><strong>Weak Example:</strong> Why is yeast important?</p>
+
+      <h4>2. Background Information</h4>
+      <p>Write ONE paragraph explaining the biological concept involved, why the topic matters, and what biology predicts may happen.</p>
+
+      <h4>3. Hypothesis</h4>
+      <p>Write an if-then-because hypothesis.</p>
+      <p><strong>Formula:</strong> If ____________, then ____________ because ____________.</p>
+      <p><strong>Strong Example:</strong> If temperature increases, then yeast respiration rate will increase because enzyme activity generally increases with temperature up to an optimal range.</p>
+
+      <h4>4. Variables and Control</h4>
+      <p>Identify the independent variable, dependent variable, at least THREE controlled variables, and control group. Then explain why the control group is important.</p>
+      <p><strong>Example:</strong> If testing fertilizer concentration: IV = fertilizer concentration; DV = plant height; controlled variables = water amount, light exposure, soil type; control group = plants with no fertilizer.</p>
+
+      <h4>5. Experimental Procedure</h4>
+      <p>Write a numbered procedure detailed enough that another student could repeat the investigation. Include setup, sample size or number of trials, how measurements would be collected, and how often data would be recorded.</p>
+
+      <h4>6. Data Table and Graph Plan</h4>
+      <p>Create ONE blank data table with labels, units when appropriate, and clear organization. Then describe what graph type you would create, what belongs on the x-axis, and what belongs on the y-axis.</p>
+
+      <h4>7. Predicted Results</h4>
+      <p>Explain what you think would happen and why. A strong response makes a prediction, describes expected results or trends, and explains the biology behind the prediction.</p>
+
+      <h4>8. Limitations and Sources of Error</h4>
+      <p>Identify at least TWO possible limitations or sources of error. Explain how each could affect the results and why scientists try to reduce error in experiments.</p>
+
+      <h4>9. AP Biology Connection</h4>
+      <p>Identify ONE AP Biology Big Idea and ONE AP Biology Science Practice. Then briefly explain how your investigation connects to each one.</p>
+
+      <h3>Investigation Design Rubric</h3>
+      <table>
+        <tr><th>Component</th><th>Points</th><th>What Strong Work Includes</th></tr>
+        <tr><td>Research Question</td><td>5</td><td>Question is clear and testable</td></tr>
+        <tr><td>Background Information</td><td>10</td><td>Accurate biology and thoughtful explanation</td></tr>
+        <tr><td>Hypothesis</td><td>5</td><td>If-then-because format with reasoning</td></tr>
+        <tr><td>Variables and Control</td><td>15</td><td>Variables and controls are accurate</td></tr>
+        <tr><td>Procedure and Replication</td><td>15</td><td>Procedure is organized and repeatable</td></tr>
+        <tr><td>Data Table and Graph Plan</td><td>10</td><td>Table and graph match the investigation</td></tr>
+        <tr><td>Predicted Results</td><td>10</td><td>Prediction supported with biological reasoning</td></tr>
+        <tr><td>Limitations and Error Analysis</td><td>10</td><td>Realistic limitations explained clearly</td></tr>
+        <tr><td>AP Biology Connection</td><td>5</td><td>Correct Big Idea and Science Practice</td></tr>
+        <tr><td>Scientific Communication</td><td>15</td><td>Writing is organized and scientific</td></tr>
+        <tr><th>Total</th><th>100</th><th></th></tr>
+      </table>
+    </section>
+
+    <section id="expectations">
+      <h2>Expectations for This Summer Assignment</h2>
+      <div class="two-col">
+        <div class="card allowed">
+          <h3>You May Use</h3>
+          <ul>
+            <li>calculators</li>
+            <li>spreadsheets</li>
+            <li>support videos</li>
+            <li>online tools to help understand concepts</li>
+          </ul>
+        </div>
+        <div class="card not-allowed">
+          <h3>You May NOT</h3>
+          <ul>
+            <li>submit AI-generated writing as your own</li>
+            <li>copy explanations from websites or AI tools</li>
+            <li>use internet images in the photo investigation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card important">
+        <strong>The goal is to practice your own scientific thinking.</strong>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    AP Biology Summer Assignment - 2026/27
+  </footer>
+</body>
+</html>
