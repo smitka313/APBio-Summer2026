@@ -50,7 +50,7 @@ nav a:hover { background:var(--accent); }
 main { max-width:1180px; margin:auto; padding:1rem; }
 section { background:rgba(255,255,255,.96); border:1px solid var(--line); border-radius:18px; margin:1rem 0; padding:1.25rem; box-shadow:0 4px 16px #0000000b; }
 h2 { color:var(--primary); border-bottom:4px solid var(--accent); padding-bottom:.35rem; margin-top:.2rem; }
-h3 { color:var(--primary); margin-top:1.4rem; }
+h3 { color:var(--blue); margin-top:1.4rem; }
 h4 { margin-bottom:.3rem; color:#243b53; }
 table { width:100%; border-collapse:collapse; margin:1rem 0; background:white; }
 th,td { border:1px solid #aebdcc; padding:.65rem; vertical-align:top; }
@@ -294,510 +294,46 @@ th, td {
 
 footer { text-align:center; padding:2rem; color:var(--muted); }
 @media(max-width:760px) { .photo-card { grid-template-columns:1fr; } }
-@media(max-width:700px) {
-  section {
-    overflow-x:auto;
-  }
-  table {
-    min-width:560px;
-  }
-}
 @media print { nav,.progress,.button { display:none; } body { background:white; } section { box-shadow:none; page-break-inside:avoid; } }
 
+.student-alert {
+  background: #f5f9ff;
+  border-left: 5px solid #2b6cb0;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
 .student-alert h3 {
-  margin-top:0;
+  margin-top: 0;
 }
+
 .student-alert .button {
-  margin:.35rem .35rem .35rem 0;
-}
-
-
-/* Safe usability add-ons */
-:focus-visible {
-  outline:3px solid var(--primary-dark);
-  outline-offset:3px;
-}
-.button:focus-visible, nav a:focus-visible, summary:focus-visible, input:focus-visible, #back-to-top:focus-visible {
-  outline:3px solid var(--primary-dark);
-  outline-offset:3px;
-}
-.external-link::after, a[target="_blank"]::after {
-  content:" ↗";
-  font-weight:800;
-}
-.link-note {
-  display:block;
-  margin-top:.35rem;
-  color:var(--muted);
-  font-size:.88rem;
-}
-.utility-button {
-  border:0;
-  cursor:pointer;
-  font-family:inherit;
-  font-size:.92rem;
-}
-.contact-card {
-  border-left:6px solid var(--primary);
-}
-.contact-card p {
-  margin:.25rem 0;
-}
-#back-to-top {
-  position:fixed;
-  right:1rem;
-  bottom:1rem;
-  z-index:50;
-  background:var(--primary);
-  color:white;
-  text-decoration:none;
-  border-radius:999px;
-  padding:.7rem .95rem;
-  font-weight:800;
-  box-shadow:0 4px 14px #0002;
-}
-#back-to-top:hover {
-  background:var(--primary-dark);
-}
-@media print {
-  #back-to-top, .print-button, .link-note { display:none !important; }
-}
-
-
-/* === Low-risk usability add-ons: sticky nav, Back to Top, collapsible FAQ === */
-
-.sticky-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.12);
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
-}
-
-.sticky-nav-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.65rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.sticky-nav-title {
-  font-weight: 700;
-  color: #1f2937;
-  white-space: nowrap;
-}
-
-.sticky-nav-toggle {
-  display: none;
-  border: 1px solid rgba(15, 23, 42, 0.18);
-  border-radius: 0.6rem;
-  background: #ffffff;
-  padding: 0.5rem 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.sticky-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.sticky-nav-links a {
-  color: #1f2937;
-  text-decoration: none;
-  font-weight: 650;
-  font-size: 0.92rem;
-  padding: 0.45rem 0.65rem;
-  border-radius: 999px;
-}
-
-.sticky-nav-links a:hover,
-.sticky-nav-links a:focus {
-  background: rgba(37, 99, 235, 0.10);
-  outline: none;
-}
-
-.back-to-top {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 1200;
-  border: none;
-  border-radius: 999px;
-  padding: 0.75rem 1rem;
-  font-weight: 800;
-  background: #2563eb;
-  color: #ffffff;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.22);
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(12px);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.back-to-top.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.faq-toggle {
-  width: 100%;
-  text-align: left;
-  border: 1px solid rgba(15, 23, 42, 0.14);
-  background: #ffffff;
-  border-radius: 0.75rem;
-  padding: 0.9rem 2.25rem 0.9rem 1rem;
-  font-weight: 800;
-  color: #1f2937;
-  cursor: pointer;
-  position: relative;
-  margin-top: 0.75rem;
-}
-
-.faq-toggle::after {
-  content: "+";
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.25rem;
-  font-weight: 900;
-}
-
-.faq-toggle[aria-expanded="true"]::after {
-  content: "−";
-}
-
-.faq-answer {
-  border-left: 4px solid rgba(37, 99, 235, 0.35);
-  padding: 0.75rem 1rem;
-  margin: 0 0 0.5rem 0.35rem;
-}
-
-.faq-answer[hidden] {
-  display: none;
-}
-
-@media (max-width: 760px) {
-  .sticky-nav-inner {
-    align-items: stretch;
-    flex-wrap: wrap;
-  }
-
-  .sticky-nav-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-  }
-
-  .sticky-nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.35rem;
-  }
-
-  .sticky-nav-links.open {
-    display: flex;
-  }
-
-  .sticky-nav-links a {
-    border-radius: 0.6rem;
-    background: rgba(15, 23, 42, 0.04);
-  }
-
-  .back-to-top {
-    right: 0.75rem;
-    bottom: 0.75rem;
-    padding: 0.7rem 0.85rem;
-  }
+  display: inline-block;
+  margin-top: 10px;
 }
 
 
 
-/* === Biology visual theme enhancements: CSS-only, no content/JS changes === */
-:root {
-  --primary:#1f6b3a;
-  --primary-dark:#124022;
-  --secondary:#4f9f46;
-  --accent:#c7e6b4;
-  --background:#f2f8ec;
-  --card:#ffffff;
-  --gold:#fff1b8;
-  --warning:#fde6d2;
-  --ink:#183021;
-  --muted:#566b5c;
-  --line:#b9d5b6;
-  --water:#dff3f0;
-  --dna:#2f6f9f;
-  --chlorophyll:#2f8f46;
-  --cell:#e9f7dc;
+/* === Fix: align unit icons/tags inside collapsible unit rows === */
+details > summary {
+  justify-content:flex-start;
 }
-
-body {
-  background-color:var(--background);
-  background-image:
-    radial-gradient(circle at 18px 18px, rgba(31,107,58,.10) 0 2px, transparent 2.4px),
-    radial-gradient(circle at 72px 58px, rgba(47,111,159,.07) 0 3px, transparent 3.5px),
-    radial-gradient(circle at 43px 91px, rgba(79,159,70,.08) 0 8px, transparent 8.7px),
-    linear-gradient(30deg, rgba(31,107,58,.035) 12%, transparent 12.5%, transparent 87%, rgba(31,107,58,.035) 87.5%),
-    linear-gradient(150deg, rgba(47,111,159,.035) 12%, transparent 12.5%, transparent 87%, rgba(47,111,159,.035) 87.5%);
-  background-size:110px 110px, 110px 110px, 110px 110px, 36px 62px, 36px 62px;
-  background-attachment:fixed;
+details > summary::after {
+  margin-left:auto;
+  flex:0 0 auto;
 }
-
-header {
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-  padding:3.25rem 1rem;
-  background:
-    radial-gradient(circle at 12% 25%, rgba(199,230,180,.36), transparent 24%),
-    radial-gradient(circle at 88% 15%, rgba(223,243,240,.30), transparent 25%),
-    linear-gradient(135deg, #102f1b 0%, var(--primary-dark) 28%, var(--primary) 58%, var(--dna) 100%);
+details > summary::before {
+  flex:0 0 auto;
 }
-
-header::before {
-  content:"🧬  🔬  🌿  🧫  🧪  🦠  🌱";
-  position:absolute;
-  inset:auto -1rem .35rem -1rem;
-  z-index:-1;
-  color:rgba(255,255,255,.16);
-  font-size:clamp(2rem,7vw,5.5rem);
-  letter-spacing:.35rem;
-  white-space:nowrap;
+details > summary .unit-tag {
+  min-width:4.6rem;
   text-align:center;
-}
-
-header::after {
-  content:"Explore life from molecules to ecosystems";
-  display:inline-block;
-  margin-top:.9rem;
-  padding:.38rem .9rem;
-  border:1px solid rgba(255,255,255,.36);
-  border-radius:999px;
-  background:rgba(255,255,255,.13);
-  color:#f2fff1;
-  font-weight:800;
-  letter-spacing:.02em;
-  backdrop-filter:blur(5px);
-}
-
-header h1 {
-  text-shadow:0 3px 18px rgba(0,0,0,.28);
-}
-
-nav, .sticky-nav {
-  background:rgba(250,255,247,.94);
-  border-bottom:1px solid rgba(31,107,58,.20);
-}
-
-nav a, .sticky-nav-links a {
-  color:var(--primary-dark);
-}
-
-nav a:hover, .sticky-nav-links a:hover, .sticky-nav-links a:focus {
-  background:linear-gradient(135deg, rgba(199,230,180,.90), rgba(223,243,240,.90));
-}
-
-main::before {
-  content:"🧬  🔬  🌿  AP Biology Summer Assignment  🌿  🔬  🧬";
-  display:block;
-  margin:.75rem auto 1rem;
-  padding:.55rem 1rem;
-  max-width:900px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  background:rgba(255,255,255,.78);
-  color:var(--primary-dark);
-  text-align:center;
-  font-weight:800;
-  box-shadow:0 5px 18px rgba(18,64,34,.08);
-}
-
-section {
-  position:relative;
-  overflow:hidden;
-  border-color:rgba(31,107,58,.24);
-  box-shadow:0 10px 26px rgba(18,64,34,.08);
-}
-
-section::before {
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:5px;
-  background:linear-gradient(90deg, var(--primary), var(--secondary), var(--dna), var(--accent));
-}
-
-section::after {
-  content:"";
-  position:absolute;
-  right:-46px;
-  top:24px;
-  width:118px;
-  height:118px;
-  border:2px solid rgba(31,107,58,.08);
-  border-radius:50%;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(79,159,70,.08) 0 12px, transparent 13px),
-    radial-gradient(circle at 35% 35%, rgba(47,111,159,.07) 0 8px, transparent 9px);
-  pointer-events:none;
-}
-
-h2 {
-  border-bottom:0;
-  padding-bottom:.5rem;
-  background-image:linear-gradient(90deg, var(--secondary), var(--accent), transparent);
-  background-repeat:no-repeat;
-  background-size:100% 4px;
-  background-position:left bottom;
-}
-
-h2::after {
-  content:"  🧬";
-  opacity:.72;
-  font-size:.85em;
-}
-
-#student-tools h2::after { content:"  🧰"; }
-#expectations h2::after { content:"  ✅"; }
-#a1 h2::after { content:"  📊"; }
-#a2 h2::after { content:"  🌱"; }
-#a3 h2::after { content:"  🧪"; }
-
-h3:not(.student-alert h3)::before {
-  content:"🔬 ";
-}
-
-.card, details, .glance-card, .example-tile, .packet-note, .response-note, .student-alert {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.98), rgba(249,253,246,.98)),
-    radial-gradient(circle at 100% 0, rgba(199,230,180,.24), transparent 35%);
-  border-color:rgba(31,107,58,.24);
-}
-
-.card {
-  box-shadow:0 7px 18px rgba(18,64,34,.07);
-  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-
-.card:hover {
-  transform:translateY(-2px);
-  box-shadow:0 12px 26px rgba(18,64,34,.12);
-  border-color:rgba(31,107,58,.42);
-}
-
-.card h3, .card h4 {
-  color:var(--primary-dark);
-}
-
-.card h4::before {
-  content:"🧫 ";
-}
-
-.help, .callout, .warn, .key-task, .student-alert {
-  background-image:linear-gradient(135deg, rgba(255,255,255,.94), rgba(233,247,220,.92));
-}
-
-.button, .quick-actions a, #back-to-top, .back-to-top {
-  background:linear-gradient(135deg, var(--primary), var(--secondary));
-  box-shadow:0 6px 16px rgba(31,107,58,.20);
-}
-
-.button:hover, .quick-actions a:hover, #back-to-top:hover, .back-to-top:hover {
-  background:linear-gradient(135deg, var(--primary-dark), var(--dna));
-}
-
-.progress {
-  border:2px solid rgba(31,107,58,.22);
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.96), rgba(233,247,220,.95)),
-    radial-gradient(circle at 95% 20%, rgba(47,111,159,.14), transparent 28%);
-}
-
-.progress h3::before {
-  content:"🧬 ";
-}
-
-.bar {
-  background:linear-gradient(90deg, rgba(199,230,180,.55), rgba(223,243,240,.70));
-  border:1px solid rgba(31,107,58,.20);
-}
-
-#fill {
-  background:linear-gradient(90deg, var(--primary), var(--secondary), var(--dna));
-}
-
-.final-checklist input[type="checkbox"], input[data-progress] {
-  accent-color:var(--chlorophyll);
-}
-
-table {
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 5px 18px rgba(18,64,34,.06);
-}
-
-th {
-  background:linear-gradient(135deg, #dff0d4, #e5f5f1);
-  color:var(--primary-dark);
-}
-
-summary::before, .faq-toggle::before {
-  content:"🧬 ";
-}
-
-footer {
-  position:relative;
-  color:var(--primary-dark);
-  font-weight:800;
-}
-
-footer::before {
-  content:"🧬  🔬  🌿";
-  display:block;
-  margin-bottom:.45rem;
-  color:var(--secondary);
-  font-size:1.3rem;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card, .button, .quick-actions a, #fill, #back-to-top, .back-to-top {
-    transition:none;
-  }
-  .card:hover {
-    transform:none;
-  }
-}
-
-@media (max-width:700px) {
-  body {
-    background-attachment:scroll;
-    background-size:90px 90px, 90px 90px, 90px 90px, 32px 55px, 32px 55px;
-  }
-  header {
-    padding:2.55rem 1rem;
-  }
-  main::before {
-    border-radius:18px;
-    font-size:.92rem;
-  }
-  section::after {
-    opacity:.55;
-  }
+  margin-left:.2rem;
+  margin-right:.55rem;
+  flex:0 0 auto;
+  vertical-align:middle;
 }
 
 </style>
@@ -825,35 +361,10 @@ window.addEventListener("DOMContentLoaded",()=>{
 
  const finalSaved=JSON.parse(localStorage.getItem("apbioFinalChecklist")||"[]");
  document.querySelectorAll('input[data-final-check]').forEach((b,i)=>{ b.checked=!!finalSaved[i]; b.addEventListener("change",saveFinalChecklist); });
-
-
- document.querySelectorAll('a[target="_blank"]').forEach((link)=>{
-   link.classList.add('external-link');
-   if(!link.getAttribute('aria-label')){
-     link.setAttribute('aria-label', link.textContent.trim() + ' (opens in a new tab)');
-   }
- });
 });
 </script>
 </head>
-<body id="top">
-
-<nav class="sticky-nav" aria-label="Page navigation">
-  <div class="sticky-nav-inner">
-    <div class="sticky-nav-title">AP Biology Summer Assignment</div>
-    <button class="sticky-nav-toggle" type="button" aria-expanded="false" aria-controls="stickyNavLinks">
-      Menu
-    </button>
-    <div class="sticky-nav-links" id="stickyNavLinks">
-      <a href="#due-date">Due Date</a>
-      <a href="#progress-tracker">Progress Tracker</a>
-      <a href="#student-tools">Student Tools</a>
-      <a href="#helpful-resources">Resources</a>
-      <a href="#faq">FAQ</a>
-    </div>
-  </div>
-</nav>
-
+<body>
 <header>
 <h1>AP Biology Summer Assignment</h1>
 <p><strong>2026/27 • Mr. Smitka • A147 • rsmitka@roseville.k12.mi.us</strong></p>
@@ -872,7 +383,6 @@ window.addEventListener("DOMContentLoaded",()=>{
 <a href="#a2">Photo Investigation</a>
 <a href="#a3">Investigation Design</a>
 <a href="#student-tools">Final Checklist</a>
-
 </div>
 
 <div class="card help"><strong>How to use this site:</strong> Open one section at a time, use the help videos when needed, and use the progress tracker to keep yourself organized.</div>
@@ -901,26 +411,25 @@ window.addEventListener("DOMContentLoaded",()=>{
   </p>
   <a class="button"
      href="https://openstax.org/books/biology-ap-courses/pages/1-introduction"
-     target="_blank" rel="noopener noreferrer">
+     target="_blank">
      Open the OpenStax AP Biology Textbook
   </a>
   <a class="button"
    href="https://smitka313.github.io/OpenStaxCrosswalk/"
-   target="_blank" rel="noopener noreferrer">
+   target="_blank">
    OpenStax AP Biology Crosswalk
   </a>
 
   <a class="button"
      href="https://notebooklm.google.com/notebook/4a66a984-66ba-45ff-830e-a1e74b8ad0b0?pli=1"
-     target="_blank" rel="noopener noreferrer">
+     target="_blank">
      Open Interactive NotebookLM Version
   </a>
-  <span class="link-note">Resource buttons marked with ↗ open in a new browser tab.</span>
 
 </div>
 
 <div class="progress">
-<h3 id="progress-tracker" style="margin-top:0">Progress Tracker</h3>
+<h3 style="margin-top:0">Progress Tracker</h3>
 <p id="count"></p><div class="bar"><div id="fill"></div></div>
 <p class="small">This checklist saves on this device/browser only.</p>
 </div>
@@ -949,7 +458,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 
 <details><summary>Investigation 1 - Are These Results Reliable?</summary>
-<p><a class="button" href="https://tinyurl.com/APBio-StDev" target="_blank" rel="noopener noreferrer">Watch Standard Deviation Help Video</a></p>
+<p><a class="button" href="https://tinyurl.com/APBio-StDev" target="_blank">Watch Standard Deviation Help Video</a></p>
 <div class="card help"><strong>Why standard deviation?</strong> Biologists use standard deviation to measure how much data vary from the mean. It helps determine whether results are consistent and reliable.</div>
 <table><tr><th>Term</th><th>Meaning</th></tr><tr><td>Mean</td><td>The average value of a data set.</td></tr><tr><td>Standard Deviation</td><td>A measure of how spread out data are from the mean.</td></tr><tr><td>Variability</td><td>Natural differences found in biological data.</td></tr></table>
 <img class="formula" src="data:image/png;base64,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" alt="Standard deviation formula">
@@ -975,7 +484,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 </details>
 
 <details><summary>Investigation 2 - Do These Groups Appear Different?</summary>
-<p><a class="button" href="https://tinyurl.com/APBio-StError" target="_blank" rel="noopener noreferrer">Watch SEM and Error Bars Help Video</a></p>
+<p><a class="button" href="https://tinyurl.com/APBio-StError" target="_blank">Watch SEM and Error Bars Help Video</a></p>
 <div class="card help"><strong>SEM:</strong> The Standard Error of the Mean measures how precisely a sample mean estimates the true population mean. Error bars help compare groups visually.</div>
 <details>
 <summary>Need help with SEM and error bars?</summary>
@@ -1006,7 +515,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 </details>
 
 <details><summary>Investigation 4 - Did the Results Match the Prediction?</summary>
-<p><a class="button" href="https://tinyurl.com/APBio-Null-Chi" target="_blank" rel="noopener noreferrer">Watch Null Hypothesis and Chi-Square Help Video</a></p>
+<p><a class="button" href="https://tinyurl.com/APBio-Null-Chi" target="_blank">Watch Null Hypothesis and Chi-Square Help Video</a></p>
 <div class="card help"><strong>Null hypothesis:</strong> A statement that assumes there is no significant difference between observed data and expected data.</div>
 <details><summary>Show null hypothesis examples</summary><p><strong>Question:</strong> Does fertilizer type affect tomato plant growth?</p><p><strong>Null Hypothesis:</strong> There is no significant difference in tomato plant growth among the different fertilizer treatments.</p><p><strong>Question:</strong> Does temperature affect bacterial colony growth?</p><p><strong>Null Hypothesis:</strong> There is no significant difference in bacterial colony growth at the different temperatures tested.</p></details>
 <ol><li>Do plants grow taller under blue light than under red light?<div class="response-note"><strong>📝 Student response required:</strong> Write your answer in your summer assignment packet. If you no longer have your packet, write your response on a separate sheet of paper and submit it with your completed summer assignment.</div></li><li>Does caffeine increase heart rate?<div class="response-note"><strong>📝 Student response required:</strong> Write your answer in your summer assignment packet. If you no longer have your packet, write your response on a separate sheet of paper and submit it with your completed summer assignment.</div></li><li>Does salt concentration affect osmosis in potato cells?<div class="response-note"><strong>📝 Student response required:</strong> Write your answer in your summer assignment packet. If you no longer have your packet, write your response on a separate sheet of paper and submit it with your completed summer assignment.</div></li></ol>
@@ -1161,7 +670,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 </div>
 
 
-<h3 id="helpful-resources">Helpful Resources</h3>
+<h3>Helpful Resources</h3>
 
 <div class="grid">
 
@@ -1170,7 +679,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     <p>Free AP Biology textbook used for reference throughout the year.</p>
     <a class="button"
        href="https://openstax.org/books/biology-ap-courses/pages/1-introduction"
-       target="_blank" rel="noopener noreferrer">
+       target="_blank">
        Open Textbook
     </a>
   </div>
@@ -1184,18 +693,7 @@ window.addEventListener("DOMContentLoaded",()=>{
       <li>Error Bars</li>
       <li>Chi-Square</li>
     </ul>
-  </div>
-
-  <div class="card">
-    <h4>🧭 OpenStax/AP Curriculum Crosswalk</h4>
-    <p>Use this guide to connect OpenStax textbook sections with AP Biology curriculum topics.</p>
-    <a class="button"
-       href="https://smitka313.github.io/OpenStaxCrosswalk/"
-       target="_blank" rel="noopener noreferrer">
-       Open Crosswalk
-    </a>
-  </div>
-
+  
   <div class="card">
     <h4>🤖 Interactive NotebookLM Textbook</h4>
 
@@ -1205,7 +703,7 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     <a class="button"
        href="https://notebooklm.google.com/notebook/4a66a984-66ba-45ff-830e-a1e74b8ad0b0?pli=1"
-       target="_blank" rel="noopener noreferrer">
+       target="_blank">
        Open NotebookLM
     </a>
   </div>
@@ -1213,17 +711,9 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 </div>
 
-<p class="small link-note">Resource links marked with ↗ open in a new browser tab.</p>
-
-<div class="card contact-card">
-  <h3>Need Help?</h3>
-  <p><strong>Teacher:</strong> Mr. Smitka</p>
-  <p><strong>Email:</strong> <a href="mailto:rsmitka@roseville.k12.mi.us">rsmitka@roseville.k12.mi.us</a></p>
-  <p><strong>Room:</strong> A147</p>
-  <p><strong>School:</strong> Roseville High School</p>
 </div>
 
-<h3 id="faq">Frequently Asked Questions</h3>
+<h3>Frequently Asked Questions</h3>
 <details open><summary>Can I use my phone for photos?</summary><p>Yes. Phone photos are completely fine as long as they are original and include your proof object.</p></details>
 <details><summary>Can I use a pet in a photo?</summary><p>Yes. Pets can be used when they clearly connect to a biological concept, such as phenotype, behavior, adaptation, or artificial selection.</p></details>
 <details><summary>Can I use family members?</summary><p>Occasionally, but most photos should come from natural or biological examples around you. Do not make all of your examples human-centered.</p></details>
@@ -1282,104 +772,5 @@ window.addEventListener("DOMContentLoaded",()=>{
 <div class="card callout"><strong>The goal is to practice your own scientific thinking.</strong></div>
 </section>
 </main>
-<a id="back-to-top" href="#top" aria-label="Back to top">↑ Top</a>
 <footer>AP Biology Summer Assignment 2026/27 - Roseville High School</footer>
-<button class="back-to-top" type="button" aria-label="Back to top">↑ Top</button>
-
-<script>
-(function () {
-  function ready(fn) {
-    if (document.readyState !== "loading") fn();
-    else document.addEventListener("DOMContentLoaded", fn);
-  }
-
-  ready(function () {
-    var navToggle = document.querySelector(".sticky-nav-toggle");
-    var navLinks = document.querySelector(".sticky-nav-links");
-
-    if (navToggle && navLinks) {
-      navToggle.addEventListener("click", function () {
-        var expanded = navToggle.getAttribute("aria-expanded") === "true";
-        navToggle.setAttribute("aria-expanded", String(!expanded));
-        navLinks.classList.toggle("open", !expanded);
-      });
-
-      navLinks.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", function () {
-          navToggle.setAttribute("aria-expanded", "false");
-          navLinks.classList.remove("open");
-        });
-      });
-    }
-
-    var topButton = document.querySelector(".back-to-top");
-    if (topButton) {
-      window.addEventListener("scroll", function () {
-        topButton.classList.toggle("show", window.scrollY > 450);
-      }, { passive: true });
-
-      topButton.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    }
-
-    var faqHeading = document.getElementById("faq");
-    if (faqHeading && !document.body.classList.contains("faq-enhanced")) {
-      document.body.classList.add("faq-enhanced");
-
-      var current = faqHeading.nextElementSibling;
-      while (current) {
-        if (/^H[1-3]$/.test(current.tagName)) break;
-
-        var isQuestionHeading =
-          /^H[3-5]$/.test(current.tagName) ||
-          (current.classList && (current.classList.contains("question") || current.classList.contains("faq-question")));
-
-        if (isQuestionHeading) {
-          var question = current;
-          var answerNodes = [];
-          var walker = question.nextElementSibling;
-
-          while (walker && !/^H[1-5]$/.test(walker.tagName)) {
-            answerNodes.push(walker);
-            walker = walker.nextElementSibling;
-          }
-
-          if (answerNodes.length) {
-            var button = document.createElement("button");
-            button.type = "button";
-            button.className = "faq-toggle";
-            button.setAttribute("aria-expanded", "false");
-            button.innerHTML = question.innerHTML;
-
-            var panel = document.createElement("div");
-            panel.className = "faq-answer";
-            panel.hidden = true;
-
-            answerNodes.forEach(function (node) {
-              panel.appendChild(node);
-            });
-
-            question.parentNode.insertBefore(button, question);
-            question.parentNode.insertBefore(panel, question);
-            question.remove();
-
-            button.addEventListener("click", function () {
-              var expanded = button.getAttribute("aria-expanded") === "true";
-              button.setAttribute("aria-expanded", String(!expanded));
-              panel.hidden = expanded;
-            });
-
-            current = walker;
-            continue;
-          }
-        }
-
-        current = current.nextElementSibling;
-      }
-    }
-  });
-})();
-</script>
-
 </body></html>
